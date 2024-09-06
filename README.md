@@ -4,24 +4,44 @@ Welcome to the Software Training Repository for the Vortex ROV team! This reposi
 
 ## Repository Structure
 
-- **`/Squad1`**, **`/Squad2`**, etc.: Each squad has a dedicated folder to upload and maintain their code throughout Phase 1 training. Please ensure your code is well-organized and documented within your squad’s folder.
-- **`/TrainingMaterials`**: Includes comprehensive guides and tutorials on Python programming, threading, multiprocessing, object-oriented programming (OOP), and more.
-- **`/CodeExamples`**: Sample code snippets and projects illustrating key concepts and techniques.
-- **`/Assignments`**: Skill mastery challenges and assessments to help trainees apply their knowledge.
-- **`/Documentation`**: Detailed documentation for all projects and code examples, including setup instructions and usage guidelines.
+- **`/S1SW`**, **`/S2SW`**, **`/S3SW`**: Each squad has a dedicated folder to upload and maintain their code throughout Phase 1 training. Please ensure your code is well-organized and documented within your squad’s folder.
+- **`/Projects`**: Contains the details for different projects that will be made during training.
+
+## Squads:
+
+- **`S1SW:`**
+      - Mohamed Hesham
+      - Mohamed Adel
+      - Ahmed Emad
+      - Ahmed Mahmoud
+  
+- **`S2SW:`**
+      - Mohamed Elsayed
+      - Andrew Ramez
+      - Youssef Taha
+      - Youssef Elgazzar
+
+  - **`S3SW:`**
+      - Mazen Eldeep
+      - Asmaa Aboshady
+      - Youssef Mahmoud
+      - Perihane Hossam
+      - Kenzy Mohamed
 
 ## General Rules
 
-1. **Code Submission:** Each squad is responsible for uploading their code to their designated folder. Ensure all code is properly commented and follows the coding standards provided in the training materials.
+1. **Code Submission:** Each squad is responsible for uploading their code to their designated folder. Code submission is done by making a branch from the main branch, adding your code and making the necessary modifications then submitting a pull request. You can continue to use the same branch throughout phase 1 training.
 2. **Folder Organization:** Maintain a clean and organized folder structure. Use clear filenames and directories to make navigation easy.
-3. **Documentation:** Provide thorough documentation for all code and projects, including setup instructions, usage, and any dependencies.
-4. **Code Quality:** Follow best practices for coding, including writing clean, maintainable code and adhering to project guidelines.
-5. **Support:** For questions or issues, contact the training coordinator for assistance.
+3. **Documentation:** Provide thorough documentation for all code and projects.
+5. **Support:** For questions or issues, contact @Mazen-Sakr for assistance.
 
-## Training Goals
+## Training Outline
 
-- Develop foundational skills in Python and related technologies.
-- Enhance practical knowledge through hands-on assignments and projects.
-- Prepare trainees for real-world software development tasks in the ROV projects.
+- **Topic 0:** Git and GitHub
+- **Topic 1:** Python fundamentals
+- **Topic 2:** Object-oriented programming (OOP), threading, and multiprocessing
+- **Topic 3:** Control Basics: Arduino, Python Socket, and pyserial
+- **Topic 4:** Machine learning, neural networks, and computer vision
+- **Topic 5:** GUI Fundamentals: Creating GUIs using PyQt5 and Pygame
 
-We look forward to a productive training period and encourage you to make the most of the resources available in this repository. Happy coding!
+We look forward to a productive training period and encourage you to participate as much as possible as that will be the main factor in improving your skills and allowing you to continue to phase 2. Happy coding!
