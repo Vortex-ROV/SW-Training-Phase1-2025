@@ -10,23 +10,23 @@ Welcome to the Software Training Repository for the Vortex ROV team! This reposi
 ## Squads:
 
 - **`S1SW:`**
-      - Mohamed Hesham
-      - Mohamed Adel
-      - Ahmed Emad
-      - Ahmed Mahmoud
+  - Mohamed Hesham
+  - Mohamed Adel
+  - Ahmed Emad
+  - Ahmed Mahmoud
   
 - **`S2SW:`**
-      - Mohamed Elsayed
-      - Andrew Ramez
-      - Youssef Taha
-      - Youssef Elgazzar
+  - Mohamed Elsayed
+  - Andrew Ramez
+  - Youssef Taha
+  - Youssef Elgazzar
 
-  - **`S3SW:`**
-      - Mazen Eldeep
-      - Asmaa Aboshady
-      - Youssef Mahmoud
-      - Perihane Hossam
-      - Kenzy Mohamed
+- **`S3SW:`**
+  - Mazen Eldeep
+  - Asmaa Aboshady
+  - Youssef Mahmoud
+  - Perihane Hossam
+  - Kenzy Mohamed
 
 ## General Rules
 
