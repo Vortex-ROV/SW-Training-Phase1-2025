@@ -8,24 +8,25 @@ Welcome to the Software Training Repository for the Vortex ROV team! This reposi
 - **`/Projects`**: Contains the details for different projects that will be made during training.
 
 ## Squads:
-      - **`S1SW:`**
-            - Mohamed Hesham
-            - Mohamed Adel
-            - Ahmed Emad
-            - Ahmed Mahmoud
-  
-      - **`S2SW:`**
-            - Mohamed Elsayed
-            - Andrew Ramez
-            - Youssef Taha
-            - Youssef Elgazzar
 
-      - **`S3SW:`**
-            - Mazen Eldeep
-            - Asmaa Aboshady
-            - Youssef Mahmoud
-            - Perihane Hossam
-            - Kenzy Mohamed
+- **`S1SW:`**
+      - Mohamed Hesham
+      - Mohamed Adel
+      - Ahmed Emad
+      - Ahmed Mahmoud
+  
+- **`S2SW:`**
+      - Mohamed Elsayed
+      - Andrew Ramez
+      - Youssef Taha
+      - Youssef Elgazzar
+
+  - **`S3SW:`**
+      - Mazen Eldeep
+      - Asmaa Aboshady
+      - Youssef Mahmoud
+      - Perihane Hossam
+      - Kenzy Mohamed
 
 ## General Rules
 
