@@ -5,7 +5,6 @@ Welcome to the Software Training Repository for the Vortex ROV team! This reposi
 ## Repository Structure
 
 - **`/S1SW`**, **`/S2SW`**, **`/S3SW`**: Each squad has a dedicated folder to upload and maintain their code throughout Phase 1 training. Please ensure your code is well-organized and documented within your squad’s folder.
-- **`/Projects`**: Contains the details for different projects that will be made during training.
 
 ## Squads:
 
