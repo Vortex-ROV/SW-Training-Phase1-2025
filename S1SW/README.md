@@ -1,6 +1,5 @@
 ## Squad Members:
 - Mohamed Hesham
-- Mohamed Adel
+- Youssef Elgazar
 - Ahmed Emad
 - Ahmed Mahmoud
-thus is code
