@@ -32,7 +32,7 @@ Welcome to the Software Training Repository for the Vortex ROV team! This reposi
 1. **Code Submission:** Each squad is responsible for uploading their code to their designated folder. Code submission is done by making a branch from the main branch, adding your code and making the necessary modifications then submitting a pull request. You can continue to use the same branch throughout phase 1 training.
 2. **Folder Organization:** Maintain a clean and organized folder structure. Use clear filenames and directories to make navigation easy.
 3. **Documentation:** Provide thorough documentation for all code and projects.
-5. **Support:** For questions or issues, contact @Mazen-Sakr for assistance.
+5. **Support:** For questions or issues, contact Mazen-Sakr for assistance.
 
 ## Training Outline
 
