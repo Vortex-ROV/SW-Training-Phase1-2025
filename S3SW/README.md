@@ -1,5 +1,5 @@
 ## Squad Members:
-- Mazen Eldeep
+- Mazen Eldeeb
 - Asmaa Aboshady
 - Youssef Mahmoud
 - Perihane Hossam
