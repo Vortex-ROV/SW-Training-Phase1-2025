@@ -1,6 +1,35 @@
-# Functional Programming Quiz Game
+import os
+import random
+
+LEADERBOARD_FILE = "S1SW\\leaderboard.txt"
+
+def load_leaderboard():
+    leaderboard = {}
+    if os.path.exists(LEADERBOARD_FILE):
+        with open(LEADERBOARD_FILE, "r") as file:
+            for line in file:
+                name, score = line.strip().split(":")
+                leaderboard[name] = int(score)
+    return leaderboard
+
+def save_leaderboard(leaderboard):
+    sorted_leaderboard = dict(sorted(leaderboard.items(), key=lambda item: item[1], reverse=True))
+
+    with open(LEADERBOARD_FILE, "w") as file:
+        for name, score in sorted_leaderboard.items():
+            file.write(f"{name}:{score}\n")
+
+
+def update_leaderboard(player_name, score, leaderboard):
+    if player_name in leaderboard:
+        leaderboard[player_name] += score
+    else:
+        leaderboard[player_name] = score
+    save_leaderboard(leaderboard)
+    
 
 # Define questions as a list of tuples (question, answer)
+leaderboard = load_leaderboard()
 questions = [
     ("What is the capital of France? ", "Paris"),
     ("What is the largest planet in the solar system? ", "Jupiter"),
@@ -43,6 +72,7 @@ def run_quiz_game(get_user_input):
         print(f"\nSorry, {name}, you got 3 answers wrong. Game over.")
     else:
         score = calculate_score(answers)
+        update_leaderboard(name, score, leaderboard)
         print_results(score, name)
 
 # Function to simulate user input (replace with input for real play)
