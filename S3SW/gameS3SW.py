@@ -1,6 +1,6 @@
 from gussingGame.game1 import gussing_game
 
-def play():  #play method that show the gmes menu
+def play():  #play method that show the games menu
   while True: 
     print("what do you want to play:\n1)tic-tac-toe\n2)quizGame\n3)wordScramble\n4)gussingGame\n5)hangManGame\n6)Exit")  
     y = int(input("please enter 1,2,3,4,5,6"))
