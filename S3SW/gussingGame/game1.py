@@ -4,7 +4,8 @@ import random
 def gussing_game():
     def addpoint(score):
         return score + 1
-
+    my_file = open("S3SW\gussingGame\game1.txt","a") #leaderBord file
+    games_won=0
     tries = 1
     wins = 0
     randomNumber = random.randint(1, 10)
@@ -29,6 +30,7 @@ def gussing_game():
             tries = 1
             if wins == 3:
                 print("You have won the game!")
+                games_won+=1
                 break
             else:
              print("Let's go again! Keep guessing, win 3 rounds to win the game.")
@@ -63,6 +65,7 @@ def gussing_game():
             tries = 1
             if wins == 3:
                 print("You have won the game!")
+                games_won+=1
                 break
             else:
                 print("Let's go again! Keep guessing, win 3 rounds to win the game.")
@@ -71,4 +74,6 @@ def gussing_game():
           print("game over! you could not guess the number in 3 tries")
      elif again=="no":
         print("Thanks for playing")
+        my_file.write(name+": "+str(games_won)+"\n")
+        my_file.close
         break  
