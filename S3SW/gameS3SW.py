@@ -1,4 +1,5 @@
 from gussingGame.game1 import gussing_game
+from scrambleGame.game2 import scrambleGame
 
 def play():  #play method that show the games menu
   while True: 
@@ -10,7 +11,7 @@ def play():  #play method that show the games menu
         case 2:
             print("quizGame") #mkan el print htb2a elmethod    
         case 3:
-            print("wordScramble") #mkan el print htb2a elmethod
+            scrambleGame()      
         case 4:
             gussing_game()
         case 5: 
@@ -27,7 +28,9 @@ def leaderBord():
         case 2:
             print("quizGame") #mkan el print htb2a elmethod    
         case 3:
-            print("wordScramble") #mkan el print htb2a elmethod
+            file=open("S3SW\scrambleGame\game2.txt")
+            print(file.read())
+            file.close
         case 4:
              file=open("S3SW\gussingGame\game1.txt")
              print(file.read())

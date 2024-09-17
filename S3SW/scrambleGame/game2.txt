@@ -1,0 +1,6 @@
+leaderBord:
+rr: 1
+ww: 2
+e: 0
+r: 1
+kenzy: 1
