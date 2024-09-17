@@ -3,7 +3,6 @@ import random
 def scrambleGame():
     word_list = ['python', 'computer', 'programming', 'scramble', 'algorithm', 'data', 'science','vortex','labtop']
     file2=open("S3SW\scrambleGame\game2.txt","a")
-# Function to scramble the word
     def scramble_word(word):
        scrambled = list(word)
        random.shuffle(scrambled)
