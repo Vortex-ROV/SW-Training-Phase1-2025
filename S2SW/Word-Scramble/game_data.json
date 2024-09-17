@@ -1,0 +1,22 @@
+{
+  "1": [
+    ["CAT", "BAT", "TAB", "TACK", "BACK", "STACK"],
+    ["C", "A", "T", "B", "K", "S"]
+  ],
+  "2": [
+    ["PIN", "NIP", "TIN", "PINT", "TINT", "PRINT"],
+    ["P", "I", "N", "T", "R", "T"]
+  ],
+  "3": [
+    ["DOG", "GOD", "DOT", "GOOD", "TOOD", "GODOT"],
+    ["D", "O", "G", "T", "O", "O"]
+  ],
+  "4": [
+    ["CAR", "ARC", "BAR", "BARK", "RACK", "CRACK"],
+    ["C", "A", "R", "B", "K", "C"]
+  ],
+  "5": [
+    ["HEN", "TEN", "NET", "TENT", "HEAT", "NEATH"],
+    ["H", "E", "N", "T", "A", "T"]
+  ]
+}
