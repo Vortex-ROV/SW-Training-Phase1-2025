@@ -40,8 +40,7 @@ while goOn:
         goOn = False
 
 #Will fix the file path when merging code.
-file_path = r"C:\Users\ACER\Desktop\Vortex\Training Phase 1\Python Fundementals\Python Fundementals Project\guessNumberLeaderboard.txt"
-
+file_path = "guessNumberLeaderboard.txt"
 try:
     with open(file_path, 'r') as file:
         linesList = file.readlines()
