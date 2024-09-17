@@ -4,7 +4,7 @@ goOn = True
 scores = []
 
 while goOn:
-    randomNumber = random.randint(1, 5)
+    randomNumber = random.randint(1, 10)
     count = 1
     print("Try to guess the number!\n")
 
@@ -39,11 +39,9 @@ while goOn:
         print(scores)
         goOn = False
 
-#Will fix the file path when merging code.
-file_path = r"C:\Users\ACER\Desktop\Vortex\Training Phase 1\Python Fundementals\Python Fundementals Project\guessNumberLeaderboard.txt"
 
 try:
-    with open(file_path, 'r') as file:
+    with open("guessNumberLeaderboard.txt", 'r') as file:
         linesList = file.readlines()
 except FileNotFoundError:
     linesList = []
@@ -56,6 +54,6 @@ linesList = list(set(linesList))
 
 linesList.sort()
 
-with open(file_path, 'w') as file:
+with open("guessNumberLeaderboard.txt", 'w') as file:
     for score in linesList:
         file.write(f"{str(score)}\n")
