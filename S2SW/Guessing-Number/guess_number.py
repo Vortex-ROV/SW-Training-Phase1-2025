@@ -26,7 +26,7 @@ while goOn:
 
     while True:
         try:
-            gameContinue = input("Do You Want To Play Again? Y/N  ").lower().strip()
+            gameContinue = input("Do You Want To Play Again? Y/N  ").lower().strip()
             if gameContinue not in ["y", "n"]:
                 raise ValueError("Invalid choice. Please enter Y or N.")
             break
@@ -39,8 +39,8 @@ while goOn:
         print(scores)
         goOn = False
 
-#Will fix the file path when merging code.
-file_path = r"C:\Users\ACER\Desktop\Vortex\Training Phase 1\Python Fundementals\Python Fundementals Project\guessNumberLeaderboard.txt"
+# Will fix the file path when merging code.
+file_path = r"leaderboard.txt"
 
 try:
     with open(file_path, 'r') as file:
