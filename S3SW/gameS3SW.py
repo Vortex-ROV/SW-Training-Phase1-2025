@@ -1,6 +1,7 @@
 from gussingGame.game1 import gussing_game
 from scrambleGame.game2 import scrambleGame
 from hangManGame.game3 import hang_man_game
+from quizGame.game4 import quiz_game
 
 def play():  #play method that show the games menu
   while True: 
@@ -10,7 +11,7 @@ def play():  #play method that show the games menu
         case 1:
             print("tic-tac-toe") #mkan el print htb2a elmethod
         case 2:
-            print("quizGame") #mkan el print htb2a elmethod    
+            quiz_game()
         case 3:
             scrambleGame()      
         case 4:
@@ -21,15 +22,17 @@ def play():  #play method that show the games menu
             break    
 def leaderBord():
     
-    print("choose one :\n1)tic-tac-toe\n2)quizGame\n3)wordScramble\n4)gussingGame\n5)hangManGame\n6)Exit")  
+    print("choose one :\n1)tic-tac-toe\n2)wordScramble\n3)quizGame\n4)gussingGame\n5)hangManGame\n6)Exit")  
     i = int(input("please enter 1,2,3,4,5,6"))
     match i:
         case 1:
             print("tic-tac-toe") #mkan el print htb2a elmethod
         case 2:
-            print("quizGame") #mkan el print htb2a elmethod    
-        case 3:
             file=open("S3SW\scrambleGame\game2.txt")
+            print(file.read())
+            file.close
+        case 3:
+            file=open("S3SW\quizGame\leaderboard.json")
             print(file.read())
             file.close
         case 4:

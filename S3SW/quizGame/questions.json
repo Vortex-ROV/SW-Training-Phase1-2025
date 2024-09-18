@@ -1,0 +1,56 @@
+[
+    {
+        "question": "What is the capital of France?",
+        "choices": [
+            "A) Berlin",
+            "B) Madrid",
+            "C) Paris",
+            "D) Rome"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "What is 2 + 2?",
+        "choices": [
+            "A) 3",
+            "B) 4",
+            "C) 5",
+            "D) 6"
+        ],
+        "correct": "B"
+
+    },
+    {
+        "question": "who is the winner of the champions league 2009?",
+        "choices": [
+            "A) Barchelona",
+            "B) Milan",
+            "C) Real Madrid",
+            "D) Manchester United"
+        ],
+        "correct": "A"
+        
+    },
+    {
+        "question": "What is the largest planet in our solar system?",
+        "choices": [
+            "A) Earth",
+            "B) Mars",
+            "C) Jupiter",
+            "D) Saturn"
+        ],
+        "correct": "C"
+        
+    },
+    {
+        "question":":What is the smallest prime number?",
+        "choices": [
+            "A) 0",
+            "B) 1",
+            "C) 2",
+            "D) 3"
+        ],
+        "correct": "C"
+
+    }
+]
