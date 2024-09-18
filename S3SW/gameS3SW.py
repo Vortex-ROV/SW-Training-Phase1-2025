@@ -20,7 +20,8 @@ def play():  #play method that show the games menu
             hang_man_game()
         case 6 :
             break    
-def leaderBord():
+#LEADER BOARD MENU
+def leaderBoard():
     
     print("choose one :\n1)tic-tac-toe\n2)wordScramble\n3)quizGame\n4)gussingGame\n5)hangManGame\n6)Exit")  
     i = int(input("please enter 1,2,3,4,5,6"))
@@ -43,7 +44,7 @@ def leaderBord():
              file=open("S3SW\hangManGame\game3.txt")
              print(file.read())
              file.close
-                 
+# main menu of the game         
 while True:
  print("welcome to our game the playgroud\n1) play\n2) leaderBord\n3) Exit")
  x = int(input("please enter 1,2,3"))
@@ -51,6 +52,6 @@ while True:
   case 1 :
       play()  
   case 2 :
-      leaderBord()
+      leaderBoard()
   case 3 :
       break    
