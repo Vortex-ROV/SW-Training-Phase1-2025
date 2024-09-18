@@ -1,9 +1,11 @@
 import random
 
-
+#MAIN METHOD OF THE GAME
 def gussing_game():
+    #METHOD TO KEEP TRACK OF THE SCORE
     def addpoint(score):
         return score + 1
+    
     my_file = open("S3SW\gussingGame\game1.txt","a") #leaderBord file
     games_won=0
     tries = 1
