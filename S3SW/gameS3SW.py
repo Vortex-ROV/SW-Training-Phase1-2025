@@ -2,6 +2,7 @@ from gussingGame.game1 import gussing_game
 from scrambleGame.game2 import scrambleGame
 from hangManGame.game3 import hang_man_game
 from quizGame.game4 import quiz_game
+from GameTicTacToe.game5 import tic_tac_toe
 
 def play():  #play method that show the games menu
   while True: 
@@ -9,7 +10,7 @@ def play():  #play method that show the games menu
     y = int(input("please enter 1,2,3,4,5,6"))
     match y:
         case 1:
-            print("tic-tac-toe") #mkan el print htb2a elmethod
+            tic_tac_toe()
         case 2:
             quiz_game()
         case 3:
@@ -27,7 +28,9 @@ def leaderBoard():
     i = int(input("please enter 1,2,3,4,5,6"))
     match i:
         case 1:
-            print("tic-tac-toe") #mkan el print htb2a elmethod
+            file=open("S3SW\GameTicTacToe\game5.txt")
+            print(file.read())
+            file.close
         case 2:
             file=open("S3SW\scrambleGame\game2.txt")
             print(file.read())
