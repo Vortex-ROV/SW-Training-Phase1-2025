@@ -15,7 +15,6 @@ Game flow:
 - The user decides to play again or to exit the game.
 
 Leaderboard:
-- The leaderboard displays the top 5 scores.
 - The leaderboard is saved in a file named "leaderboard.txt".
 - The leaderboard is updated after each game.
 - The leaderboard is displayed in descending order.
@@ -89,26 +88,36 @@ def check_winner(board, player):
 
 
 def player_vs_player():
-    player1 = input("Enter Player 1 Name: ").strip()
-    player2 = input("Enter Player 2 Name: ").strip()
+    while True:
+        player1 = input("Enter Player 1 Name: ").strip()
+        if player1 == "AI Agent":
+            print("This name is dedicated for the computer. Please, enter another name.")
+        else:
+            break
+    while True:
+        player2 = input("Enter Player 2 Name: ").strip()
+        if player2 == "AI Agent":
+            print("This name is dedicated for the computer. Please, enter another name.")
+        elif player2 == player1:
+            print("This name is already taken. Please, enter another name.")
+        else:
+            break
     players = [player1, player2]
     scores = {player1: 0, player2: 0}
 
+    game = 'X'
+    reverse_game_dict = {'X': 'O', 'O': 'X'}
     while True:
-        game = 'X'
         board = [" " for _ in range(9)]
         print_board(board)
+        temp = game
 
         while True:
             game_ended = False
             for player in players:
                 player_game(board, player, game)
                 print_board(board)
-
-                if game == 'X':
-                    game = 'O'
-                else:
-                    game = 'X'
+                game = reverse_game_dict[game]
 
                 if check_winner(board, "X"):
                     print(f"{player1} Wins!")
@@ -128,13 +137,16 @@ def player_vs_player():
         if play_again() == "n":
             break
 
+        game = reverse_game_dict[temp]
+        players.reverse()
+
     update_leaderboard(scores)
 
 
 def player_vs_computer():
     player1 = input("Enter Player 1 Name: ").strip()
     player2 = "AI Agent"
-    players = [player2, player1]
+    players = [player1, player2]
     scores = {player1: 0, player2: 0}
 
     while True:
@@ -168,6 +180,8 @@ def player_vs_computer():
 
         if play_again() == "n":
             break
+
+        players.reverse()
 
     update_leaderboard(scores)
 
