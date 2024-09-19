@@ -42,7 +42,7 @@ def guessNumber():
             goOn = False
 
     try:
-        with open("guessNumberLeaderboard.txt", 'r') as file:
+        with open(r"C:\Users\ACER\Desktop\Vortex\Training Phase 1\Python Fundementals\SW-Training-Phase1-2025\S2SW\Main-Game\guessNumberLeaderboard.txt", 'r') as file:
             linesList = file.readlines()
     except FileNotFoundError:
         linesList = []
@@ -55,7 +55,7 @@ def guessNumber():
 
     linesList.sort()
 
-    with open("guessNumberLeaderboard.txt", 'w') as file:
+    with open(r"C:\Users\ACER\Desktop\Vortex\Training Phase 1\Python Fundementals\SW-Training-Phase1-2025\S2SW\Main-Game\guessNumberLeaderboard.txt", 'w') as file:
         for score in linesList:
             file.write(f"{str(score)}\n")
 
@@ -63,7 +63,7 @@ def guessNumber():
 def quizGame():
     scores = []
     try:
-        with open(r"C:\Users\ACER\Desktop\Vortex\Training Phase 1\Python Fundementals\SW-Training-Phase1-2025\S2SW\Questions.txt", 'r') as file:
+        with open(r"C:\Users\ACER\Desktop\Vortex\Training Phase 1\Python Fundementals\SW-Training-Phase1-2025\S2SW\Main-Game\Questions.txt", 'r') as file:
             linesList = file.readlines()
     except FileNotFoundError:
         print("Questions file not found.")
@@ -129,7 +129,7 @@ def quizGame():
             gameOn = False
 
     try:
-        with open("QuizGame Leaderboard.txt", 'r') as file:
+        with open(r"C:\Users\ACER\Desktop\Vortex\Training Phase 1\Python Fundementals\SW-Training-Phase1-2025\S2SW\Main-Game\QuizGame Leaderboard.txt", 'r') as file:
             allLeaderBoard = file.readlines()
     except FileNotFoundError:
         allLeaderBoard = []
@@ -145,7 +145,7 @@ def quizGame():
     allLeaderBoard = list(set(allLeaderBoard))
     allLeaderBoard.sort(reverse=True)
 
-    with open("QuizGame Leaderboard.txt", 'w') as file:
+    with open(r"C:\Users\ACER\Desktop\Vortex\Training Phase 1\Python Fundementals\SW-Training-Phase1-2025\S2SW\Main-Game\QuizGame Leaderboard.txt", 'w') as file:
         for score in allLeaderBoard:
             file.write(f"{str(score)}\n")
 
@@ -285,7 +285,7 @@ def startleaderboard():
         except FileNotFoundError:
             print("Questions file not found.")
             return
-        print("\nTOP SCORES WITH MOST ANSWERED QUESTIONS!")
+        print("\nTOP SCORES WITH MOST LETTERS GUESSED!")
         print("="*42)
         for lines in linesList:
             print(lines)
