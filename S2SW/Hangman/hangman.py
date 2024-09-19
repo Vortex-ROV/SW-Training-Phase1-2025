@@ -57,7 +57,7 @@ def hangman():
             guessed_L = input("Enter a letter").lower()
             while len(guessed_L) != 1 or not guessed_L.isalpha():
                 guessed_L = input("Please select a singular alphabetical letter")
-                if guessed_L in guessed_letters():
+                if guessed_L in guessed_letters:
                     print("YOU ALREADY GUESSED THIS LETTER")
             if guessed_L in answer:
                 maxScore +=1
