@@ -136,7 +136,7 @@ def quizGame():
 
     try:
         allLeaderBoard = [int(line.strip())
-                              for line in allLeaderBoard if line.strip().isdigit()]
+                          for line in allLeaderBoard if line.strip().isdigit()]
     except ValueError:
         print("Error reading leaderboard data. Some entries might be corrupted.")
         return
@@ -159,7 +159,7 @@ def hangman():
 
     name = input("WHAT IS YOUR NAME :")
     Words = ("vortex", "pineapple", "keyboard", "computer", "carpet",
-            "house", "table", "chair", "office", "plane", "machine", "fridge")
+             "house", "table", "chair", "office", "plane", "machine", "fridge")
     hangman_view = {0: ("  ",
                         "  ",
                         "  "),
@@ -182,13 +182,11 @@ def hangman():
                         "/|\\",
                         "/ \\")}
 
-
     def hangman_display(wrong_guess):
         print("---------------")
         for line in hangman_view[wrong_guess]:
             print(line)
         print("---------------")
-
 
     def spaces(hints):
         print(" ".join(hints))
@@ -206,12 +204,13 @@ def hangman():
             spaces(hint)
             guessed_L = input("Enter a letter").lower()
             while len(guessed_L) != 1 or not guessed_L.isalpha():
-                guessed_L = input("Please select a singular alphabetical letter")
+                guessed_L = input(
+                    "Please select a singular alphabetical letter")
                 if guessed_L in guessed_letters:
                     print("YOU ALREADY GUESSED THIS LETTER")
             if guessed_L in answer:
-                maxScore +=1
-                
+                maxScore += 1
+
                 for i in range(len(answer)):
                     if answer[i] == guessed_L:
                         hint[i] = guessed_L
@@ -236,7 +235,8 @@ def hangman():
                 break
         while True:
             try:
-                gameContinue = input("Do You Want To Play Again? Y/N  ").lower().strip()
+                gameContinue = input(
+                    "Do You Want To Play Again? Y/N  ").lower().strip()
                 if gameContinue not in ["y", "n"]:
                     raise ValueError("Invalid choice. Please enter Y or N.")
                 break
@@ -255,13 +255,14 @@ def hangman():
         allLeaderBoard = []
 
     try:
-        allLeaderBoard = [int(line.strip()) for line in allLeaderBoard if line.strip().isdigit()]
+        allLeaderBoard = [int(line.strip())
+                          for line in allLeaderBoard if line.strip().isdigit()]
     except ValueError:
         print("Error reading leaderboard data. Some entries might be corrupted.")
         return
 
     allLeaderBoard.extend(allScores)
-    allLeaderBoard = list(set(allLeaderBoard)) 
+    allLeaderBoard = list(set(allLeaderBoard))
     allLeaderBoard.sort(reverse=True)
 
     with open(r"C:\Users\ACER\Desktop\Vortex\Training Phase 1\Python Fundementals\SW-Training-Phase1-2025\S2SW\Hangman\hangmanLeaderBoard.txt", 'w') as file:
@@ -274,7 +275,7 @@ def hangman():
 def startleaderboard():
 
     def leaderboardHangman():
-        
+
         try:
             with open(r"C:\Users\ACER\Desktop\Vortex\Training Phase 1\Python Fundementals\SW-Training-Phase1-2025\S2SW\Hangman\hangmanLeaderBoard.txt", 'r') as file:
                 linesList = file.readlines()
@@ -321,8 +322,8 @@ def startleaderboard():
 
     def leaderboard():
         print(f"\nGame Options:")
-        print(f"LeaderBoard Hangman: 1")
-        print(f"LeaderBoard Quiz-Game: 2")
+        print(f"LeaderBoard Quiz-Game: 1")
+        print(f"LeaderBoard Hangman: 2")
         print(f"LeaderBoard Guessing-Number: 3")
         print(f"LeaderBoard Tic-Tac-Toe: 4")
         print(f"LeaderBoard Word-Scramble: 5")
@@ -338,14 +339,11 @@ def startleaderboard():
 
         match num:
             case 1:
-                leaderboardHangman()
-                breakpoint
-            case 2:
                 leaderboardQuizGame()
-                breakpoint
+            case 2:
+                leaderboardHangman()
             case 3:
                 leadebroardGuessingNumber()
-                breakpoint
             case 4:
                 pass
             case 5:
@@ -360,7 +358,8 @@ def startleaderboard():
 
         while True:
             try:
-                repeatsInput = input("Do you want to see another leaderboard? Y/N  ").lower().strip()
+                repeatsInput = input(
+                    "Do you want to see another leaderboard? Y/N  ").lower().strip()
                 if repeatsInput not in ["y", "n"]:
                     raise ValueError("Invalid choice. Please enter Y or N.")
                 break
@@ -371,11 +370,10 @@ def startleaderboard():
             leaderboardRepeats = False
 
 
-
 def runMatch():
     print(f"\nGame Options:")
-    print(f"Hangman: 1")
-    print(f"Quiz-Game: 2")
+    print(f"Quiz-Game: 1")
+    print(f"Hangman: 2")
     print(f"Guessing-Number: 3")
     print(f"Tic-Tac-Toe: 4")
     print(f"Word-Scramble: 5")
@@ -384,7 +382,7 @@ def runMatch():
     while True:
         try:
             num = int(input("\nEnter a number between 1 and 6: "))
-            if num not in [1, 2, 3, 4, 5,6]:
+            if num not in [1, 2, 3, 4, 5, 6]:
                 raise ValueError("Invalid choice. Please enter number 1-6")
             break
         except ValueError as e:
@@ -392,31 +390,29 @@ def runMatch():
 
     match num:
         case 1:
-            hangman()
-            breakpoint
+            quizGame()     
         case 2:
-            quizGame()
-            breakpoint
+            hangman()
         case 3:
-            guessNumber()
-            breakpoint
+            guessNumber()  
         case 4:
             pass
         case 5:
             pass
         case 6:
             startleaderboard()
-            breakpoint
         case _:
             print("\nNumber not between 1 and 6")
-        
+
+
 gameRepeats = True
 while gameRepeats:
-    
+
     runMatch()
     while True:
         try:
-            continueInput = input("Do you want to try another game? Y/N  ").lower().strip()
+            continueInput = input(
+                "Do you want to try another game? Y/N  ").lower().strip()
             if continueInput not in ["y", "n"]:
                 raise ValueError("Invalid choice. Please enter Y or N.")
             break
@@ -425,4 +421,3 @@ while gameRepeats:
 
     if continueInput == "n":
         gameRepeats = False
-
