@@ -209,7 +209,7 @@ def hangman():
                 if guessed_L in guessed_letters:
                     print("YOU ALREADY GUESSED THIS LETTER")
             if guessed_L in answer:
-                maxScore += 1
+                maxScore += 10
 
                 for i in range(len(answer)):
                     if answer[i] == guessed_L:
@@ -217,12 +217,13 @@ def hangman():
                         guessed_letters.add(guessed_L)
             else:
                 incorrect_guesses += 1
+                maxScore-=5
                 hangman_display(incorrect_guesses)
             if incorrect_guesses >= 6:
                 hangman_display(incorrect_guesses)
                 allScores.append(maxScore)
                 print(f"YOU LOST {name} ")
-                print()
+                print(f"your score is :{maxScore}")
                 print(f"THE ANSWER WAS {answer}")
                 print()
                 break
@@ -231,6 +232,7 @@ def hangman():
                 spaces(hint)
                 print()
                 print(f"YOU WON {name} ")
+                print(f"your score is :{maxScore}")
                 allScores.append(maxScore)
                 break
         while True:
@@ -282,7 +284,7 @@ def startleaderboard():
         except FileNotFoundError:
             print("Questions file not found.")
             return
-        print("\nTOP SCORES WITH MOST LETTERS GUESSED!")
+        print("\nTOP SCORES WITH MOST SCORE!")
         print("="*42)
         for lines in linesList:
             print(lines)
@@ -421,3 +423,5 @@ while gameRepeats:
 
     if continueInput == "n":
         gameRepeats = False
+
+#
