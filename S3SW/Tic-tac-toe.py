@@ -5,7 +5,7 @@ def print_board(board):
     print("\n")
     for row in board:
         print(" | ".join(row))
-        print("-" * 5)
+        print("--" * 5)
 
 # Function to check if a player has won
 def check_winner(board, player):
