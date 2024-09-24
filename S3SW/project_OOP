@@ -2,9 +2,10 @@ from abc import ABC, abstractmethod
 import threading
 import random
 import time
+from datetime import datetime
 
-#base class 
 
+# Base class
 class ROV(ABC):
     def __init__(self, rov_id, rov_type):
         self.rov_id = rov_id
@@ -19,7 +20,7 @@ class ROV(ABC):
         self.mission_queue.append(mission)
         print(f"ROV {self.rov_id} received mission {mission['mission_id']}")
 
-    #abstract method will be implemented in each subclass
+    # Abstract method to be implemented in each subclass
     @abstractmethod
     def execute_mission(self):
         pass
@@ -39,8 +40,8 @@ class ROV(ABC):
         with self.lock:
             print(f"[Status] ROV {self.rov_id}: {self.status}, Battery: {self.battery_level}%")
 
-#inheret from super class
 
+# Inherit from superclass
 class ExplorationROV(ROV): 
     def __init__(self, rov_id):
         super().__init__(rov_id, 'Exploration')
@@ -102,3 +103,101 @@ class MaintenanceROV(ROV):
             self.status = 'Idle'
             self.send_status_update()
             self.check_battery()
+
+# this class is responsible for managing ROVs , assigning mission to them , simulation of their operations 
+class MMCS:
+    #The constructor initializes the # of ROVs and calls initialize_rov_fleet() to create the ROV instances based on user input. 
+    def __init__(self, num_rovs):
+        #attributes 
+        self.rovs = []  # a list that stores instances of ROVs and each one can be (Exploration , sampling , and maintenance )
+        self.missions = []  # a list to keep track of missions that have been assigned to the ROVs.
+        self.num_rovs = num_rovs
+        self.mission_id_counter = 1001  # Starting mission ID
+        self.initialize_rov_fleet()  # Initialize the ROV fleet
+        
+        
+        
+    #to ask user to enter the type of ROV for each vehicle in the fleet
+    
+    def initialize_rov_fleet(self):
+        for i in range(1, self.num_rovs + 1):
+            rov_type = int(input(f"Enter type for ROV {i} (1 - Exploration, 2 - Sampling, 3 - Maintenance): "))
+            if rov_type == 1:
+                rov = ExplorationROV(f"ROV_{i}")
+            elif rov_type == 2:
+                rov = SamplingROV(f"ROV_{i}")
+            elif rov_type == 3:
+                rov = MaintenanceROV(f"ROV_{i}")
+            else:
+                print("Invalid type. Defaulting to Exploration.")
+                rov = ExplorationROV(f"ROV_{i}")
+            self.rovs.append(rov)
+    #This method generates a mission dictionary with the following attributes (mission_id , mission_type , target_location , status)
+    def generate_mission(self, mission_type):
+        mission = {
+            "mission_id": self.mission_id_counter,
+            "mission_type": mission_type,
+            "target_location": (random.randint(0, 100), random.randint(0, 100)),
+            "status": "Pending"
+        }
+        self.mission_id_counter += 1
+        return mission
+    #This method assigns a specified number of missions to the ROVs
+    def assign_missions(self, num_missions):  #Randomly selects an ROV from the fleet
+        for _ in range(num_missions):
+            rov = random.choice(self.rovs)
+            if isinstance(rov, ExplorationROV):
+                mission = self.generate_mission("Exploration")
+            elif isinstance(rov, SamplingROV):
+                mission = self.generate_mission("Sampling")
+            else:
+                mission = self.generate_mission("Maintenance")
+
+            rov.receive_mission(mission)
+            self.missions.append(mission)
+            current_time = datetime.now().strftime("%H:%M:%S")
+            print(f"[{current_time}] {rov.rov_id} assigned Mission {mission['mission_id']}: {mission['mission_type']} at {mission['target_location']}")
+ 
+
+    def start_simulation(self):
+        threads = []
+        for rov in self.rovs:
+            rov_thread = threading.Thread(target=self.run_rov, args=(rov,))
+            rov_thread.start()
+            threads.append(rov_thread)
+
+        for thread in threads:
+            thread.join()  # Ensure all threads complete before terminating simulation
+
+    def run_rov(self, rov):
+        while rov.mission_queue:
+            rov.execute_mission()
+            time.sleep(random.uniform(1, 3))  # Add random delay between missions
+
+    def terminate_simulation(self):
+        print("[Simulation Ended]")
+        self.display_summary()
+
+    def display_summary(self):
+        print("\nFinal Summary:")
+        for rov in self.rovs:
+            print(f"- {rov.rov_id} Status: {rov.status}, Battery Level: {rov.battery_level}%")
+        print(f"- Total Missions Completed: {len(self.missions)}")
+
+
+def main():
+    print("Welcome to the Underwater ROV Fleet Management Simulator!")
+    
+    # Get user inputs
+    num_rovs = int(input("Please enter the number of ROVs: "))
+    num_missions = int(input("Please enter the number of missions to complete: "))
+
+    # Initialize the simulation and MMCS
+    mmcs = MMCS(num_rovs)
+    mmcs.assign_missions(num_missions)  # Assign missions after initializing ROVs
+    mmcs.start_simulation()  # Start the simulation
+    mmcs.terminate_simulation()  # Terminate the simulation and show summary
+
+
+if __name__ == "__main__":
+    main()
