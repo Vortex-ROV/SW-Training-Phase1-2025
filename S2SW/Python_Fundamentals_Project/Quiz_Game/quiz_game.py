@@ -1,7 +1,19 @@
-def QuizGame():
+import os
+
+# Get the directory of the current script
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the full path to questions.txt
+questions_path = os.path.join(current_dir, 'questions.txt')
+
+# Construct the full path to leaderboard.txt
+leaderboard_path = os.path.join(current_dir, 'leaderboard.txt')
+
+
+def game_loop():
     scores = []
     try:
-        with open(r"C:\Users\ACER\Desktop\Vortex\Training Phase 1\Python Fundementals\SW-Training-Phase1-2025\S2SW\Questions.txt", 'r') as file:
+        with open(questions_path, 'r') as file:
             linesList = file.readlines()
     except FileNotFoundError:
         print("Questions file not found.")
@@ -16,7 +28,7 @@ def QuizGame():
     gameOn = True
     while gameOn:
 
-        questionAmount = len(linesList) // 6 
+        questionAmount = len(linesList) // 6
         lives = 3
         i = 0
         points = 0
@@ -53,7 +65,7 @@ def QuizGame():
 
         while True:
             try:
-                gameContinue = input("Do You Want To Play Again? Y/N  ").lower().strip()
+                gameContinue = input("Do You Want To Play Again? Y/N ").lower().strip()
                 if gameContinue not in ["y", "n"]:
                     raise ValueError("Invalid choice. Please enter Y or N.")
                 break
@@ -64,7 +76,7 @@ def QuizGame():
             gameOn = False
 
     try:
-        with open("QuizGame Leaderboard.txt", 'r') as file:
+        with open(leaderboard_path, 'r') as file:
             allLeaderBoard = file.readlines()
     except FileNotFoundError:
         allLeaderBoard = []
@@ -76,12 +88,11 @@ def QuizGame():
         return
 
     allLeaderBoard.extend(scores)
-    allLeaderBoard = list(set(allLeaderBoard)) 
+    allLeaderBoard = list(set(allLeaderBoard))
     allLeaderBoard.sort(reverse=True)
 
-    with open("QuizGame Leaderboard.txt", 'w') as file:
+    with open(leaderboard_path, 'w') as file:
         for score in allLeaderBoard:
             file.write(f"{str(score)}\n")
 
     print("Leaderboard Updated:", allLeaderBoard)
-

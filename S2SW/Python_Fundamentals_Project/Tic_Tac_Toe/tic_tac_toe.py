@@ -40,7 +40,14 @@ Functions:
 - play_again(): Ask the user if they want to play again.
 - game_loop(): Main game loop.
 """
-from minimax import Minimax
+import os
+from .minimax import Minimax
+
+# Get the directory of the current script
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the full path to leaderboard.txt
+leaderboard_path = os.path.join(current_dir, 'leaderboard.txt')
 
 
 def game_mode():
@@ -187,9 +194,8 @@ def player_vs_computer():
 
 
 def update_leaderboard(scores):
-    file_path = r"leaderboard.txt"
     try:
-        with open(file_path, 'r') as file:
+        with open(leaderboard_path, 'r') as file:
             linesList = file.readlines()
     except FileNotFoundError:
         linesList = []
@@ -205,15 +211,14 @@ def update_leaderboard(scores):
 
     linesList = {k: v for k, v in sorted(linesList.items(), key=lambda item: item[1], reverse=True)}
 
-    with open(file_path, 'w') as file:
+    with open(leaderboard_path, 'w') as file:
         for player, score in linesList.items():
             file.write(f"{player}: {score}\n")
 
 
 def display_leaderboard():
-    file_path = r"leaderboard.txt"
     try:
-        with open(file_path, 'r') as file:
+        with open(leaderboard_path, 'r') as file:
             linesList = file.readlines()
     except FileNotFoundError:
         linesList = []
@@ -246,7 +251,3 @@ def game_loop():
         input("Press Enter To Continue...")
         if play_again() == "n":
             break
-
-
-if __name__ == "__main__":
-    game_loop()

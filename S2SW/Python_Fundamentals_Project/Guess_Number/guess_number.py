@@ -1,6 +1,14 @@
-def guess_number():
-    import random
+import os
+import random
 
+# Get the directory of the current script
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the full path to leaderboard.json
+leaderboard_path = os.path.join(current_dir, 'leaderboard.txt')
+
+
+def game_loop():
     goOn = True
     scores = []
 
@@ -27,7 +35,7 @@ def guess_number():
 
         while True:
             try:
-                gameContinue = input("Do You Want To Play Again? Y/N  ").lower().strip()
+                gameContinue = input("Do You Want To Play Again? Y/N ").lower().strip()
                 if gameContinue not in ["y", "n"]:
                     raise ValueError("Invalid choice. Please enter Y or N.")
                 break
@@ -41,7 +49,7 @@ def guess_number():
             goOn = False
 
     try:
-        with open("guessNumberLeaderboard.txt", 'r') as file:
+        with open(leaderboard_path, 'r') as file:
             linesList = file.readlines()
     except FileNotFoundError:
         linesList = []
@@ -54,6 +62,6 @@ def guess_number():
 
     linesList.sort()
 
-    with open("guessNumberLeaderboard.txt", 'w') as file:
+    with open(leaderboard_path, 'w') as file:
         for score in linesList:
             file.write(f"{str(score)}\n")

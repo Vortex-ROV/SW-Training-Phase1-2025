@@ -86,7 +86,17 @@ import json
 from collections import Counter
 from english_words import get_english_words_set
 
-with open('game_data.json', 'r') as game_data:
+# Get the directory of the current script
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the full path to game_data.json
+game_data_path = os.path.join(current_dir, 'game_data.json')
+
+# Construct the full path to leaderboard.json
+leaderboard_path = os.path.join(current_dir, 'leaderboard.json')
+
+# Open the file using the full path
+with open(game_data_path, 'r') as game_data:
     GAMES_DICT = json.load(game_data)
 
 ENGLISH_WORDS = set(word.upper() for word in get_english_words_set(["web2"]))
@@ -106,17 +116,17 @@ def is_bonus(word, scrambled_list):
 
 
 def load_leaderboard():
-    if not os.path.exists("leaderboard.json"):
+    if not os.path.exists(leaderboard_path):
         return {}
     try:
-        with open("leaderboard.json", "r") as f:
+        with open(leaderboard_path, "r") as f:
             return json.load(f)
     except json.JSONDecodeError:
         return {}
 
 
 def save_leaderboard(leaderboard):
-    with open("leaderboard.json", "w") as f:
+    with open(leaderboard_path, "w") as f:
         json.dump(leaderboard, f)
 
 
@@ -180,7 +190,3 @@ def game_loop():
         display_leaderboard()
         if input("Play Again? (y/n): ").strip().lower() != 'y':
             break
-
-
-if __name__ == "__main__":
-    game_loop()

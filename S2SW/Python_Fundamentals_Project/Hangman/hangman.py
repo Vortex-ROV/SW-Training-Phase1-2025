@@ -1,11 +1,19 @@
-def hangman():
+import os
+import random
+
+# Get the directory of the current script
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the full path to leaderboard.json
+leaderboard_path = os.path.join(current_dir, 'leaderboard.txt')
+
+
+def game_loop():
     allScores = []
-    import time
-    import random
 
     name = input("WHAT IS YOUR NAME :")
     Words = ("vortex", "pineapple", "keyboard", "computer", "carpet",
-            "house", "table", "chair", "office", "plane", "machine", "fridge")
+             "house", "table", "chair", "office", "plane", "machine", "fridge")
     hangman_view = {0: ("  ",
                         "  ",
                         "  "),
@@ -28,20 +36,14 @@ def hangman():
                         "/|\\",
                         "/ \\")}
 
-
     def hangman_display(wrong_guess):
         print("---------------")
         for line in hangman_view[wrong_guess]:
             print(line)
         print("---------------")
 
-
     def spaces(hints):
         print(" ".join(hints))
-
-
-    def answer(answer):
-        pass
 
     goOn = True
     while goOn:
@@ -60,8 +62,8 @@ def hangman():
                 if guessed_L in guessed_letters:
                     print("YOU ALREADY GUESSED THIS LETTER")
             if guessed_L in answer:
-                maxScore +=1
-                
+                maxScore += 1
+
                 for i in range(len(answer)):
                     if answer[i] == guessed_L:
                         hint[i] = guessed_L
@@ -99,7 +101,7 @@ def hangman():
     print(allScores)
 
     try:
-        with open(r"C:\Users\ACER\Desktop\Vortex\Training Phase 1\Python Fundementals\SW-Training-Phase1-2025\S2SW\Hangman\hangmanLeaderBoard.txt", 'r') as file:
+        with open(leaderboard_path, 'r') as file:
             allLeaderBoard = file.readlines()
     except FileNotFoundError:
         allLeaderBoard = []
@@ -111,15 +113,11 @@ def hangman():
         return
 
     allLeaderBoard.extend(allScores)
-    allLeaderBoard = list(set(allLeaderBoard)) 
+    allLeaderBoard = list(set(allLeaderBoard))
     allLeaderBoard.sort(reverse=True)
 
-    with open(r"C:\Users\ACER\Desktop\Vortex\Training Phase 1\Python Fundementals\SW-Training-Phase1-2025\S2SW\Hangman\hangmanLeaderBoard.txt", 'w') as file:
+    with open(leaderboard_path, 'w') as file:
         for score in allLeaderBoard:
             file.write(f"{str(score)}\n")
 
     print("Leaderboard Updated:", allLeaderBoard)
-
-
-
-hangman()

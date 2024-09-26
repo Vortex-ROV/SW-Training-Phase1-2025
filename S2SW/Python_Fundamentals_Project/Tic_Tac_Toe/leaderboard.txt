@@ -1,3 +1,6 @@
 AI Agent: 30
 Mohamed Adel: 15
 John Doe: 10
+Mohamed: 10
+Mahmoud: 0
+Adel: 0
