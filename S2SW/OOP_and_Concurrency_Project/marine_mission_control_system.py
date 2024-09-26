@@ -39,37 +39,47 @@ class MarineMissionControlSystem:
     def assign_mission(self, rov):
         """
         Assign a mission to an ROV if the mission type matches the ROV type.
+        If no mission is available, return False.
         """
         if not self.mission_queue.empty():
             mission = self.mission_queue.get()
             if mission.mission_type == rov.rov_type:
                 rov.receive_mission(mission)
                 return True
+            else:
+                # If the mission doesn't match the ROV type, put it back in the queue
+                self.mission_queue.put(mission)
+                return False
         return False
 
     def rov_thread(self, rov):
         """
         Thread function for each ROV. Assigns missions to the ROV and handles malfunctions.
         """
-        while self.completed_missions < self.mission_count:
+        while True:
+            if self.completed_missions >= self.mission_count:
+                break
+            
             if rov.status == RovStatus.IDLE:
                 if self.assign_mission(rov):
                     rov.execute_mission()
-                    self.completed_missions += 1
+                    with self.print_lock:
+                        self.completed_missions += 1
                 else:
-                    time.sleep(1)  # Wait before checking for new missions
+                    time.sleep(1) 
             elif rov.status == RovStatus.MALFUNCTION:
                 self.handle_rov_malfunction(rov)
             else:
-                time.sleep(1)  # ROV is busy, wait before checking again
+                time.sleep(1) 
 
     def handle_rov_malfunction(self, malfunctioned_rov):
+
         """
         Handle a malfunctioned ROV by assigning a Maintenance ROV to fix it.
         """
         maintenance_rov = next((rov for rov in self.rov_fleet if isinstance(rov, MaintenanceROV) and
-                                rov.status == RovStatus.IDLE), None)  # Find an available Maintenance ROV
-        # Assign the Maintenance ROV to fix the malfunctioned ROV
+                                rov.status == RovStatus.IDLE), None)  
+
         if maintenance_rov:
             with self.print_lock:
                 print(f"[{self.get_timestamp()}] Maintenance ROV {maintenance_rov.rov_id} assigned to fix ROV "
@@ -90,11 +100,11 @@ class MarineMissionControlSystem:
         self.generate_missions()
         threads = []
         for rov in self.rov_fleet:
-            thread = threading.Thread(target=self.rov_thread, args=(rov,))  # Create a thread for each ROV
+            thread = threading.Thread(target=self.rov_thread, args=(rov,)) 
             threads.append(thread)
             thread.start()
 
-        # Wait for all threads to finish
+
         for thread in threads:
             thread.join()
 
