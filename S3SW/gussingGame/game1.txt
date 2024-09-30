@@ -1,0 +1,5 @@
+leaderboard:
+youssef: 1
+omar: 2
+rrr: 0
+joe: 1

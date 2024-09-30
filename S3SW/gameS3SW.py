@@ -1,0 +1,60 @@
+from gussingGame.game1 import gussing_game
+from scrambleGame.game2 import scrambleGame
+from hangManGame.game3 import hang_man_game
+from quizGame.game4 import quiz_game
+from GameTicTacToe.game5 import tic_tac_toe
+
+def play():  #play method that show the games menu
+  while True: 
+    print("what do you want to play:\n1)tic-tac-toe\n2)quizGame\n3)wordScramble\n4)gussingGame\n5)hangManGame\n6)Exit")  
+    y = int(input("please enter 1,2,3,4,5,6"))
+    match y:
+        case 1:
+            tic_tac_toe()
+        case 2:
+            quiz_game()
+        case 3:
+            scrambleGame()      
+        case 4:
+            gussing_game()
+        case 5: 
+            hang_man_game()
+        case 6 :
+            break    
+#LEADER BOARD MENU
+def leaderBoard():
+    
+    print("choose one :\n1)tic-tac-toe\n2)wordScramble\n3)quizGame\n4)gussingGame\n5)hangManGame\n6)Exit")  
+    i = int(input("please enter 1,2,3,4,5,6"))
+    match i:
+        case 1:
+            file=open("S3SW\GameTicTacToe\game5.txt")
+            print(file.read())
+            file.close
+        case 2:
+            file=open("S3SW\scrambleGame\game2.txt")
+            print(file.read())
+            file.close
+        case 3:
+            file=open("S3SW\quizGame\leaderboard.json")
+            print(file.read())
+            file.close
+        case 4:
+             file=open("S3SW\gussingGame\game1.txt")
+             print(file.read())
+             file.close
+        case 5: 
+             file=open("S3SW\hangManGame\game3.txt")
+             print(file.read())
+             file.close
+# main menu of the game         
+while True:
+ print("welcome to our game the playgroud\n1) play\n2) leaderBord\n3) Exit")
+ x = int(input("please enter 1,2,3"))
+ match x:
+  case 1 :
+      play()  
+  case 2 :
+      leaderBoard()
+  case 3 :
+      break    
