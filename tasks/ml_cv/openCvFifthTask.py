@@ -9,7 +9,7 @@ def points(event,x,y,flags,pram):
         count+=1
         print(x,y)
 
-img = cv2.imread("tasks\jhonsmith.jpg")
+img = cv2.imread("tasks\ml_cv\jhonsmith.jpg")
 while True:
     if count==4:
         w,h = 250,350

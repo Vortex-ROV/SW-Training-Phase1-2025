@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-img = cv2.imread('tasks\shapes_sizes.png')
+img = cv2.imread('tasks\ml_cv\shapes_sizes.png')
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 _, thresholded = cv2.threshold(gray, 120, 255, cv2.THRESH_BINARY_INV)
 edges = cv2.Canny(gray, 50, 150)
