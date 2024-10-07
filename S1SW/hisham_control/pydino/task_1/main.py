@@ -31,11 +31,11 @@ while True:
     command = input("Arduino Command (ON/OFF/exit): ").strip()
 
     # Check if input is valid
-    if command.upper() in valid_commands:
+    if command in valid_commands:
         # Send valid command to Arduino
         serialInst.write(command.encode('utf-8'))
 
-        if command.lower() == 'exit':  # Check for exit
+        if command == 'exit':  # Check for exit
             print("Exiting...")
             serialInst.close()  # Properly close the serial port
             break
