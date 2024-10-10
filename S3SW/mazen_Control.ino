@@ -24,7 +24,7 @@ void setup() {
   // Initialize potentiometer pin
   pinMode(potentiometerPin, INPUT);
   
-  // Ensure buzzer and LED are off at start
+  // Ensure buzzer is off at start
   digitalWrite(buzzerPin, LOW);
 
 }
@@ -59,10 +59,10 @@ void loop() {
   
   // Compare distance with threshold
   if (distance > 0 && distance >= threshold) {
-    // Activate buzzer and LED
+    // Activate buzzer 
     digitalWrite(buzzerPin, HIGH);
   } else {
-    // Deactivate buzzer and LED
+    // Deactivate buzzer 
     digitalWrite(buzzerPin, LOW);
   }
   
