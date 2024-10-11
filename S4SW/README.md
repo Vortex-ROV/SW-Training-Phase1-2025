@@ -1,2 +1,4 @@
 ## Squad Members:
-- m & j & Y
+- Youssef Elnady
+- Joumana Ehab
+- Mazen Bassem
