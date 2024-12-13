@@ -1,50 +1,69 @@
-import time
 import cv2
 
-def Terminate_Stream(stream):
-    stream.release()
-    cv2.destroyAllWindows() 
+cap = cv2.VideoCapture(0)
 
-def Rotate_90(frame):
-    return cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
+video_writer = None
+saving_video = False
 
-def Save_Frame(frame):
-    cv2.imwrite("save_frame.jpg",frame)
-    print("Frame Saved")
-    pass
+while cap.isOpened():
+    ret, frame = cap.read()
 
-def Save_video_stream(frame):
-    pass
+    cv2.imshow('Original Frame', frame)
 
-def Convert_To_Greyscale(frame):
-    pass
+    key = cv2.waitKey(1) & 0xFF
 
-def Convert_To_HSV(frame):
-    pass
-
-
-stream = cv2.VideoCapture(0)
-while True:
-    ret, frame = stream.read()
-    cv2.imshow("Main Camera",frame)
-    
-    
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        Terminate_Stream(stream)
-        time.sleep(500)
+    if key == ord('q'):
         break
-    elif cv2.waitKey(1) & 0xFF == ord('r'):
-        rotated_frame = Rotate_90(frame)
-        cv2.imshow("Rotate Frame", rotated_frame)
-        time.sleep(1000)
-    elif cv2.waitKey(1) & 0xFF == ord('c'):
-        Save_Frame(frame)
-    elif cv2.waitKey(1) & 0xFF == ord('s'):
-        Save_video_stream(frame)
-    elif cv2.waitKey(1) & 0xFF == ord('g'):
-        Convert_To_Greyscale(frame)
-    elif cv2.waitKey(1) & 0xFF == ord('h'):
-        Convert_To_HSV(frame)
-    
+
+    elif key == ord('r'):
+        frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
+        cv2.imshow('Rotated Frame', frame)
+
+    elif key == ord('c'):
+        save_path = '/mnt/data/saved_frame.jpg'
+        cv2.imwrite(save_path, frame)
+        print(f"Frame saved at {save_path}.")
+
+    elif key == ord('s'):
+        if saving_video:
+            saving_video = False
+            video_writer.release()
+            print("Stopped saving video.")
+        else:
+            fourcc = cv2.VideoWriter_fourcc(*'XVID')
+            video_writer = cv2.VideoWriter('./S5SW/ML-Tasks/saved_video.avi', fourcc, 20.0, (frame.shape[1], frame.shape[0]))
+            saving_video = True
+            print("Started saving video.")
+
+    if saving_video and video_writer:
+        video_writer.write(frame)
 
 
+    elif key == ord('g'):
+        gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        cv2.imshow('Grayscale Frame', gray_frame)
+
+    elif key == ord('h'):
+        hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+        cv2.imshow('HSV Frame', hsv_frame)
+
+    elif key == ord('x'):
+        rotated_frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
+        cv2.imshow('Rotated Frame', rotated_frame)
+        gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        cv2.imshow('Grayscale Frame', gray_frame)
+        hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+        cv2.imshow('HSV Frame', hsv_frame)
+        cv2.waitKey(0)
+        cv2.destroyWindow("Rotated Frame")
+        cv2.destroyWindow("Grayscale Frame")
+        cv2.destroyWindow("HSV Frame")
+        
+
+    elif key == ord('z'):
+        cv2.destroyAllWindows()
+
+cap.release()
+if video_writer:
+    video_writer.release()
+cv2.destroyAllWindows()
